@@ -13,7 +13,24 @@
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
     
+    <script>
+      const options = { method: "GET" };
     
+    fetch("http://18.207.173.95:8080/bank/Jane Doe", options)
+       .then((response) => response.json())
+       .then((y) => {
+         console.log(y);
+         //update y.title to a parameter from the real URL
+         document.getElementById("current-account-SortCode").innerHTML = y.currentAccountDto.currentAccountSortCode;
+         document.getElementById("savings-account-SortCode").innerHTML = y.savingsAccountDto.savingsAccountSortCode;
+         document.getElementById("savings-account-number").innerHTML = y.savingsAccountDto.savingsAccountNumber;
+         document.getElementById("current-account-number").innerHTML = y.currentAccountDto.currentAccountNumber;
+       })
+     .catch((err) => alert("Unable to get the data from API", err));
+
+    </script>
+  
+  
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -115,15 +132,15 @@
                     <div class="u-border-3 u-border-grey-40 u-container-style u-group u-group-1">
                       <div class="u-container-layout u-container-layout-2">
                         <h3 class="u-align-center u-text u-text-default u-text-2">My Account</h3>
-                        <h6 class="u-align-center u-text u-text-default u-text-3">23-90-34</h6>
-                        <h6 class="u-align-center u-text u-text-default u-text-4">87456208</h6>
+                        <h6 id="current-account-SortCode">99-99-98</h6>
+                        <h6 id="current-account-number">87456208</h6>
                       </div>
                     </div>
                     <div class="u-border-3 u-border-grey-40 u-container-style u-group u-group-2">
                       <div class="u-container-layout u-container-layout-3">
                         <h3 class="u-align-center u-text u-text-default u-text-5">My Savings</h3>
-                        <h6 class="u-align-center u-text u-text-default u-text-6">28474924</h6>
-                        <h6 class="u-align-center u-text u-text-default u-text-7">23-90-34</h6>
+                        <h6 id="savings-account-number">28474924</h6>
+                        <h6 id="savings-account-SortCode">00-00-00</h6>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="get">Replace with data from get request.</p>
+    <p id="post">Replace with status from post request.</p>
+  </body>
+  <script>
+    //GET CALL
+    const options = { method: "GET" };
+    
+    fetch("http://18.207.173.95:8080/bank/Jane Doe", options)
+       .then((response) => response.json())
+       .then((y) => {
+         console.log(y);
+         //update y.title to a parameter from the real URL
+         document.getElementById("get").innerHTML = y.customerName;
+       })
+     .catch((err) => alert("Unable to get the data from API", err));
+
+    //POST CALL
+    //Update name, salary and age with the username and password
+    const bodyPayload = { customerName: "John Smith", password: "qwerty", };
+    const postOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bodyPayload),
+    };
+    //Update the link in the fetch request with the login URL
+    fetch("http://18.207.173.95:8080/bank/login", postOptions)
+      .then((y) => {
+        console.log(y);
+        if (y.status == 200) {
+          document.getElementById("post").innerHTML = "post call worked";
+        } else if (y.status == 429) {
+          document.getElementById("post").innerHTML = "Post call worked";
+        } else {
+          document.getElementById("post").innerHTML = y.status;
+        }
+      })
+      .catch((err) => alert("Error: " + err));
+  </script>
+</html>
