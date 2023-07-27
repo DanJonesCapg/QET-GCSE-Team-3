@@ -1,4 +1,4 @@
- .u-section-1 {
+.u-section-1 {
   background-image: url("images/background.png");
   background-position: 50% 50%;
 }
@@ -48,7 +48,7 @@
   text-transform: uppercase;
   font-size: 0.875rem;
   letter-spacing: 1px;
-  margin: -42px auto 0 432px;
+  margin: 0 auto 0 432px;
 }
 
 .u-section-1 .u-btn-3 {
